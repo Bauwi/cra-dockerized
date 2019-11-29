@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t bauwie/cra-dockerized -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true bauwie/cra-dockerized npm run test
